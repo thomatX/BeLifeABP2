@@ -29,7 +29,7 @@ namespace Negocio
         /// <returns></returns>
         public static bool ValidarRut(string value) {
             bool validated = false;
-            if (value.Length < MAXRUT) {
+            if (!value.Equals(String.Empty) && value.Length < MAXRUT) {
                 validated = true;
             }
             return validated;
@@ -44,7 +44,7 @@ namespace Negocio
         public static bool ValidarNombre(string value)
         {
             bool validated = false;
-            if (value.Length < MAXNOMBRE)
+            if (!value.Equals(String.Empty) && value.Length < MAXNOMBRE)
             {
                 validated = true;
             }
@@ -60,7 +60,7 @@ namespace Negocio
         public static bool ValidarApellido(string value)
         {
             bool validated = false;
-            if (value.Length < MAXAPELLIDO)
+            if (!value.Equals(String.Empty) && value.Length < MAXAPELLIDO)
             {
                 validated = true;
             }
@@ -93,6 +93,8 @@ namespace Negocio
         public static int MAXCODIGOPLAN = 5;
         public static int MAXIDPLAN = 5;
         public static int MAXPOLIZAACTUAL = 15;
+        public static DateTime MAXFECHACONTRATO = DateTime.Today.AddMonths(+1);
+        public static DateTime MINFECHACONTRATO = DateTime.Today;
 
         // -------------------- Métodos validaciones Contrato ------------------------
         /// <summary>
@@ -104,7 +106,7 @@ namespace Negocio
         public static bool ValidarNumContrato(string value)
         {
             bool validated = false;
-            if (value.Length < MAXNUMCONTRATO)
+            if (!value.Equals(String.Empty) && value.Length < MAXNUMCONTRATO)
             {
                 validated = true;
             }
@@ -120,7 +122,7 @@ namespace Negocio
         public static bool ValidarCodigoPlan(string value)
         {
             bool validated = false;
-            if (value.Length < MAXCODIGOPLAN)
+            if (!value.Equals(String.Empty) && value.Length < MAXCODIGOPLAN)
             {
                 validated = true;
             }
@@ -136,7 +138,7 @@ namespace Negocio
         public static bool ValidarIdPlan(string value)
         {
             bool validated = false;
-            if (value.Length < MAXIDPLAN)
+            if (!value.Equals(String.Empty) && value.Length < MAXIDPLAN)
             {
                 validated = true;
             }
@@ -152,12 +154,55 @@ namespace Negocio
         public static bool ValidarPolizaActual(string value)
         {
             bool validated = false;
-            if (value.Length < MAXPOLIZAACTUAL)
+            if (!value.Equals(String.Empty) && value.Length < MAXPOLIZAACTUAL)
             {
                 validated = true;
             }
             return validated;
         }
+
+        /// <summary>
+        /// Creamos el nuevo numero de contacto
+        /// Se genera automáticamente según la fecha y hora de creación del contrato.
+        /// Formato: AAAAMMDDHHmmSS
+        /// </summary>
+        public static string CrearNumeroContrato() {
+            string num = String.Empty;
+            try
+            {
+                num = DateTime.Now.ToString("yyyyMMddHHmmss");
+            }
+            catch (Exception e) {
+                throw e;
+            }
+
+            return num;
+        }
+
+        /// <summary>
+        /// Creamos la fecha de termino a exactamente 1 año después de la fecha de creación.
+        /// </summary>
+        /// <returns>DateTime.Today + 1 año</returns>
+        public static DateTime CrearFechaTermino() {
+            DateTime FechaTermino = DateTime.Today.AddYears(+1);
+
+            return FechaTermino;
+        }
+
+        /// <summary>
+        /// Validamos que la fecha de contrato no sea mayor a la fecha actual, ni que exceda 1 mes
+        /// </summary>
+        public static bool ValidarFechaInicioContrato(DateTime value) {
+
+            bool validated = false;
+            if (value > MINFECHACONTRATO && value < MAXFECHACONTRATO)
+                validated = true;
+
+            return validated;
+        }
+
+        
+
 
         /* ------------------------------------------------------------------------
          *                                SEXO
@@ -175,7 +220,7 @@ namespace Negocio
         public static bool ValidarDescSexo(string value)
         {
             bool validated = false;
-            if (value.Length < MAXDESCSEXO)
+            if (!value.Equals(String.Empty) && value.Length < MAXDESCSEXO)
             {
                 validated = true;
             }
@@ -200,7 +245,7 @@ namespace Negocio
         public static bool ValidarDescEstadoCivil(string value)
         {
             bool validated = false;
-            if (value.Length < MAXDESCESTCIVIL)
+            if (!value.Equals(String.Empty) && value.Length < MAXDESCESTCIVIL)
             {
                 validated = true;
             }
