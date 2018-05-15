@@ -95,6 +95,10 @@ namespace BelifeLibrary
         }
 
 
+        public int IdSexo { get; set; }
+        public int IdEstadoCivil { get; set; }
+
+
 
     }
 }

@@ -15,7 +15,7 @@ namespace Negocio
          *                                CLIENTES
          *           Toda la configuración y validaciones de la clase Cliente
            ---------------------------------------------------------------------  */
-        public static int MAXRUT = 10;
+        public static int MAXRUT = 15;
         public static int MAXNOMBRE = 20;
         public static int MAXAPELLIDO = 20;
         public static int MINEDAD = 18;
@@ -61,9 +61,8 @@ namespace Negocio
         {
             bool validated = false;
             if (!value.Equals(String.Empty) && value.Length < MAXAPELLIDO)
-            {
                 validated = true;
-            }
+
             return validated;
         }
 
@@ -75,13 +74,18 @@ namespace Negocio
         /// <returns></returns>
         public static bool ValidarFechaNacimiento(DateTime value) {
             bool validated = false;
+            int age = CalcularEdad(value);
+            if (age >= MINEDAD)
+                validated = true;
+
+            return validated;
+        }
+
+        public static int CalcularEdad(DateTime value) {
             DateTime today = DateTime.Today;
             int age = today.Year - value.Year;
-            if (age >= MINEDAD)
-            {
-                validated = true;
-            }
-            return validated;
+
+            return age;
         }
 
 
