@@ -7,28 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BeLifeEntities
+namespace BeLifeDatos
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Cliente
+    public partial class Plan
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cliente()
+        public Plan()
         {
             this.Contrato = new HashSet<Contrato>();
         }
     
-        public string Rut { get; set; }
-        public string Nombres { get; set; }
-        public string Apellidos { get; set; }
-        public System.DateTime FechaNacimiento { get; set; }
-        public int IdSexo { get; set; }
-        public int IdEstadoCivil { get; set; }
+        public string Id { get; set; }
+        public string Nombre { get; set; }
+        public double PrimaBase { get; set; }
+        public string PolizaActual { get; set; }
     
-        public virtual EstadoCivil EstadoCivil { get; set; }
-        public virtual Sexo Sexo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contrato> Contrato { get; set; }
     }

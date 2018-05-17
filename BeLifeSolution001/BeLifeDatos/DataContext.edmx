@@ -169,17 +169,17 @@
         </EntityType>
         <EntityType Name="EstadoCivil">
           <Key>
-            <PropertyRef Name="IdEstadoCivil" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="IdEstadoCivil" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.Cliente_EstadoCivil_FK1" FromRole="EstadoCivil" ToRole="Cliente" />
         </EntityType>
         <EntityType Name="Plan">
           <Key>
-            <PropertyRef Name="IdPlan" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="IdPlan" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PrimaBase" Type="Double" Nullable="false" />
           <Property Name="PolizaActual" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
@@ -187,9 +187,9 @@
         </EntityType>
         <EntityType Name="Sexo">
           <Key>
-            <PropertyRef Name="IdSexo" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="IdSexo" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.Cliente_Sexo_FK1" FromRole="Sexo" ToRole="Cliente" />
         </EntityType>
@@ -198,7 +198,7 @@
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EstadoCivil">
-              <PropertyRef Name="IdEstadoCivil" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Cliente">
               <PropertyRef Name="IdEstadoCivil" />
@@ -210,7 +210,7 @@
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sexo">
-              <PropertyRef Name="IdSexo" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Cliente">
               <PropertyRef Name="IdSexo" />
@@ -234,7 +234,7 @@
           <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Plan">
-              <PropertyRef Name="IdPlan" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Contrato">
               <PropertyRef Name="CodigoPlan" />
@@ -302,7 +302,7 @@
           <EntitySetMapping Name="EstadoCivil">
             <EntityTypeMapping TypeName="BeLifeModel.EstadoCivil">
               <MappingFragment StoreEntitySet="EstadoCivil">
-                <ScalarProperty Name="IdEstadoCivil" ColumnName="IdEstadoCivil" />
+                <ScalarProperty Name="Id" ColumnName="IdEstadoCivil" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -310,7 +310,7 @@
           <EntitySetMapping Name="Plan">
             <EntityTypeMapping TypeName="BeLifeModel.Plan">
               <MappingFragment StoreEntitySet="Plan">
-                <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+                <ScalarProperty Name="Id" ColumnName="IdPlan" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="PrimaBase" ColumnName="PrimaBase" />
                 <ScalarProperty Name="PolizaActual" ColumnName="PolizaActual" />
@@ -320,7 +320,7 @@
           <EntitySetMapping Name="Sexo">
             <EntityTypeMapping TypeName="BeLifeModel.Sexo">
               <MappingFragment StoreEntitySet="Sexo">
-                <ScalarProperty Name="IdSexo" ColumnName="IdSexo" />
+                <ScalarProperty Name="Id" ColumnName="IdSexo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>

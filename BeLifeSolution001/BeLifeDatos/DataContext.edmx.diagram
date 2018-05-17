@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4c2f264b960346e190ae61cbae3e506b" Name="Diagram1">
+      <Diagram DiagramId="6d76dd9e8008481ab3dab3d934097832" Name="Diagram1">
         <EntityTypeShape EntityType="BeLifeModel.Cliente" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BeLifeModel.Contrato" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="BeLifeModel.EstadoCivil" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />

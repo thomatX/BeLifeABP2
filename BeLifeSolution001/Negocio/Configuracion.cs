@@ -19,6 +19,10 @@ namespace Negocio
         public static int MAXNOMBRE = 20;
         public static int MAXAPELLIDO = 20;
         public static int MINEDAD = 18;
+        public static int MINSEXO = 1;
+        public static int MAXSEXO = 2;
+        public static int MINESTADOCIVIL = 1;
+        public static int MAXESTADOCIVIL = 4;
 
         // ------------------ Métodos validaciones Cliente ----------------------
         /// <summary>
@@ -87,6 +91,8 @@ namespace Negocio
 
             return age;
         }
+
+
 
 
         /* ------------------------------------------------------------------------
@@ -231,6 +237,23 @@ namespace Negocio
             return validated;
         }
 
+        /// <summary>
+        /// Metodo para validar nuevo Id Sexo
+        /// </summary>
+        /// <param name="value"></param>
+        /// Value: Nuevo Id Sexo
+        /// <returns></returns>
+        public static bool ValidarSexo(int value)
+        {
+            bool validated = false;
+            if (value > MINSEXO || value < MAXSEXO)
+                validated = true;
+
+            return validated;
+        }
+
+
+
 
 
         /* ------------------------------------------------------------------------
@@ -253,6 +276,21 @@ namespace Negocio
             {
                 validated = true;
             }
+            return validated;
+        }
+
+        /// <summary>
+        /// Metodo para validar nuevo Id Estado Civil
+        /// </summary>
+        /// <param name="value"></param>
+        /// Value: Nuevo Id Estado Civil
+        /// <returns></returns>
+        public static bool ValidarEstadoCivil(int value)
+        {
+            bool validated = false;
+            if (value > MINESTADOCIVIL || value < MAXESTADOCIVIL)
+                validated = true;
+
             return validated;
         }
 

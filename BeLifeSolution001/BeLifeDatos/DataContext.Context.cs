@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BeLifeEntities
+namespace BeLifeDatos
 {
     using System;
     using System.Data.Entity;
