@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeLifeDatos", "BeLifeDatos\BeLifeDatos.csproj", "{4174A8D3-7B28-466F-B1BE-3EF314221D56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{B2B5851C-4AD0-4E3B-AA1B-464EED710E25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4174A8D3-7B28-466F-B1BE-3EF314221D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4174A8D3-7B28-466F-B1BE-3EF314221D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4174A8D3-7B28-466F-B1BE-3EF314221D56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2B5851C-4AD0-4E3B-AA1B-464EED710E25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2B5851C-4AD0-4E3B-AA1B-464EED710E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2B5851C-4AD0-4E3B-AA1B-464EED710E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2B5851C-4AD0-4E3B-AA1B-464EED710E25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
