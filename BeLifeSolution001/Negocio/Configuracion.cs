@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Negocio
 {
     /// <summary>
@@ -11,18 +12,18 @@ namespace Negocio
     /// </summary>
     public class Configuracion
     {
+        private static BeLifeDatos.BeLifeEntities bbdd = new BeLifeDatos.BeLifeEntities();
+
+
         /* ------------------------------------------------------------------------
-         *                                CLIENTES
-         *           Toda la configuración y validaciones de la clase Cliente
-           ---------------------------------------------------------------------  */
+*                                CLIENTES
+*           Toda la configuración y validaciones de la clase Cliente
+  ---------------------------------------------------------------------  */
         public static int MAXRUT = 15;
         public static int MAXNOMBRE = 20;
         public static int MAXAPELLIDO = 20;
         public static int MINEDAD = 18;
-        public static int MINSEXO = 1;
-        public static int MAXSEXO = 2;
-        public static int MINESTADOCIVIL = 1;
-        public static int MAXESTADOCIVIL = 4;
+
 
         // ------------------ Métodos validaciones Cliente ----------------------
         /// <summary>
@@ -132,7 +133,8 @@ namespace Negocio
         public static bool ValidarCodigoPlan(string value)
         {
             bool validated = false;
-            if (!value.Equals(String.Empty) && value.Length < MAXCODIGOPLAN)
+            var plan = bbdd.Plan.First(x => x.Id == value);
+            if (!value.Equals(String.Empty) && value.Length < MAXCODIGOPLAN && plan != null)
             {
                 validated = true;
             }
@@ -238,15 +240,16 @@ namespace Negocio
         }
 
         /// <summary>
-        /// Metodo para validar nuevo Id Sexo
+        /// Verifica que el id ingresado exista dentro del rango del modelo de datos.
         /// </summary>
         /// <param name="value"></param>
-        /// Value: Nuevo Id Sexo
         /// <returns></returns>
-        public static bool ValidarSexo(int value)
+        public static bool ValidarIdSexo(int value)
         {
             bool validated = false;
-            if (value > MINSEXO || value < MAXSEXO)
+            var sexo = bbdd.Sexo.First(x => x.Id == value);
+
+            if (sexo != null)
                 validated = true;
 
             return validated;
@@ -280,19 +283,19 @@ namespace Negocio
         }
 
         /// <summary>
-        /// Metodo para validar nuevo Id Estado Civil
+        /// Verifica que el id ingresado exista dentro del rango del modelo de datos.
         /// </summary>
         /// <param name="value"></param>
-        /// Value: Nuevo Id Estado Civil
         /// <returns></returns>
-        public static bool ValidarEstadoCivil(int value)
+        public static bool ValidarIdEstadoCivil(int value)
         {
             bool validated = false;
-            if (value > MINESTADOCIVIL || value < MAXESTADOCIVIL)
+            var estadoCivil = bbdd.EstadoCivil.First(x => x.Id == value);
+
+            if (estadoCivil != null)
                 validated = true;
 
             return validated;
         }
-
     }
 }

@@ -23,6 +23,7 @@ namespace BelifeLibrary
         private int _idSexo;
         private int _idEstadoCivil;
 
+
         /// <summary>
         /// Cliente.Rut; [Devuelve el valor del atributo de la instancia Cliente]
         /// Cliente.Rut = value; [Inserta un nuevo valor al atributo de la instancia Cliente]
@@ -113,12 +114,12 @@ namespace BelifeLibrary
             set
             {
                 /*Verificamos que el valor esté dentro del rango aceptado*/
-                if (Negocio.Configuracion.ValidarSexo(value))
+                if (Negocio.Configuracion.ValidarIdSexo(value))
                     /*Si es correcto, lo seteamos a la variable*/
                     _idSexo = value;
                 else
                     /*Si es incorrecto, levantamos una excepción*/
-                    throw new Exception("Error! Id del Sexo invalido. (Min: " + Negocio.Configuracion.MINSEXO + "/Max: " + Negocio.Configuracion.MAXSEXO + ")");
+                    throw new Exception("Error! Id del Sexo invalido.");
             }
         }
 
@@ -133,14 +134,17 @@ namespace BelifeLibrary
             set
             {
                 /*Verificamos que el valor esté dentro del rango aceptado*/
-                if (Negocio.Configuracion.ValidarEstadoCivil(value))
+                if (Negocio.Configuracion.ValidarIdEstadoCivil(value))
                     /*Si es correcto, lo seteamos a la variable*/
                     _idEstadoCivil = value;
                 else
                     /*Si es incorrecto, levantamos una excepción*/
-                    throw new Exception("Error! Id del Sexo invalido. (Min: " + Negocio.Configuracion.MINESTADOCIVIL + "/Max: " + Negocio.Configuracion.MAXESTADOCIVIL + ")");
+                    throw new Exception("Error! Id del Estado Civil invalido.");
             }
         }
+
+        public Sexo Sexo { get; set; }
+        public EstadoCivil EstadoCivil { get; set; }
 
 
 
@@ -163,6 +167,8 @@ namespace BelifeLibrary
             _fechaNacimiento = new DateTime();
             _idSexo = 0;
             _idEstadoCivil = 0;
+            Sexo = new Sexo();
+            EstadoCivil = new EstadoCivil();
 
         }
 
@@ -174,7 +180,7 @@ namespace BelifeLibrary
         /// <seealso cref="BuscarCliente(string)"/>
         /// </summary>
         /// <param name="lcl"></param>
-        public bool Agregar()
+        public bool Create()
         {
             try
             {
@@ -212,7 +218,7 @@ namespace BelifeLibrary
         /// En caso de ser encontrado, crea una nueva instancia Cliente de la librería de clases, y la retorna.
         /// </summary>
         /// <returns>this</returns>
-        public Cliente Buscar()
+        public Cliente Read()
         {
             try
             {
@@ -246,7 +252,7 @@ namespace BelifeLibrary
         /// <seealso cref="Buscar()"/>
         /// </summary>
         /// <param name="rut"></param>
-        public bool Eliminar()
+        public bool Delete()
         {
             try
             {
@@ -282,7 +288,7 @@ namespace BelifeLibrary
         /// </summary>
         /// <param name="rut"></param>
         /// <param name="c"></param>
-        public bool Actualizar()
+        public bool Update()
         {
 
             try
@@ -317,10 +323,42 @@ namespace BelifeLibrary
         /// Buscamos todos los clientes de la base de datos y los convertimos a entidades
         /// </summary>
         /// <returns></returns>
-        public List<Cliente> BuscarTodos()
+        public List<Cliente> ReadAll()
         {
             /*Creamos una lista de clientes del contexto*/
             List<BeLifeDatos.Cliente> listaDatos = bbdd.Cliente.ToList<BeLifeDatos.Cliente>();
+
+            /*Los convertimos a Clientes legibles*/
+            List<Cliente> list = SyncList(listaDatos);
+
+            /*Devolvemos la lista*/
+            return list;
+        }
+
+        /// <summary>
+        /// Buscamos todos los clientes de la base de datos con el sexo asociado y los convertimos a entidades
+        /// </summary>
+        /// <returns></returns>
+        public List<Cliente> ReadAllBySexo()
+        {
+            /*Creamos una lista de clientes del contexto*/
+            List<BeLifeDatos.Cliente> listaDatos = bbdd.Cliente.Where(x => x.Sexo.Id == Sexo.Id).ToList();
+
+            /*Los convertimos a Clientes legibles*/
+            List<Cliente> list = SyncList(listaDatos);
+
+            /*Devolvemos la lista*/
+            return list;
+        }
+
+        /// <summary>
+        /// Buscamos todos los clientes de la base de datos con el estado civil asociado y los convertimos a entidades
+        /// </summary>
+        /// <returns></returns>
+        public List<Cliente> ReadAllByEstadoCivil()
+        {
+            /*Creamos una lista de clientes del contexto*/
+            List<BeLifeDatos.Cliente> listaDatos = bbdd.Cliente.Where(x => x.EstadoCivil.Id == EstadoCivil.Id).ToList();
 
             /*Los convertimos a Clientes legibles*/
             List<Cliente> list = SyncList(listaDatos);
@@ -351,69 +389,7 @@ namespace BelifeLibrary
             return list;
         }
 
-        /// <summary>
-        /// Devuelve la descripción del sexo, según su ID
-        /// Normalmente se ocupa con el parametro IdSexo del cliente
-        /// </summary>
-        /// <param name="idSexo"></param>
-        /// <returns></returns>
-        public Sexo BuscarSexo()
-        {
-            Sexo sexo = new Sexo();
-
-            try
-            {
-                /*Buscamos el sexo donde el id sea igual al parametro entregado*/
-                var sexocontext = bbdd.Sexo.First(x => x.IdSexo == IdSexo);
-                if (sexocontext != null)
-                {
-                    CommonBC.Syncronize(sexocontext,sexo);
-                }
-                else
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex);
-                throw ex;
-            }
-
-            return sexo;
-        }
-
-        /// <summary>
-        /// Devuelve la descripción del estado civil, según su ID
-        /// Normalmente se ocupa con el parametro IdEstadoCivil del cliente
-        /// </summary>
-        /// <param name="idEstadoCivil"></param>
-        /// <returns></returns>
-        public EstadoCivil BuscarEstadoCivil()
-        {
-            EstadoCivil estadocivil = new EstadoCivil();
-
-            try
-            {
-                /*Buscamos el sexo donde el id sea igual al parametro entregado*/
-                var estadocontext = bbdd.Sexo.First(x => x.IdSexo == IdEstadoCivil);
-                if (estadocontext != null)
-                {
-                    CommonBC.Syncronize(estadocontext, estadocivil);
-                }
-                else
-                {
-                    throw new Exception();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex);
-                throw ex;
-            }
-
-            return estadocivil;
-        }
+        
 
     }
 }
