@@ -93,8 +93,27 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Resource Include="adjust.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="contratos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo BeLife.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="users.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
