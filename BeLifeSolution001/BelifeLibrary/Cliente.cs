@@ -24,6 +24,8 @@ namespace BelifeLibrary
         private int _idEstadoCivil;
 
 
+
+
         /// <summary>
         /// Cliente.Rut; [Devuelve el valor del atributo de la instancia Cliente]
         /// Cliente.Rut = value; [Inserta un nuevo valor al atributo de la instancia Cliente]
@@ -389,7 +391,41 @@ namespace BelifeLibrary
             return list;
         }
 
-        
+        public Sexo BuscarSexo() {
+
+            try
+            {
+                Sexo sex = new Sexo();
+                var sexo = bbdd.Sexo.Where(x => x.Id == IdSexo);
+                CommonBC.Syncronize(sexo, sex);
+                return sex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+
+        }
+
+        public EstadoCivil BuscarEstadoCivil()
+        {
+
+            try
+            {
+                EstadoCivil ec = new EstadoCivil();
+                var estadoCivils = bbdd.EstadoCivil.Where(x => x.Id == IdEstadoCivil);
+                CommonBC.Syncronize(estadoCivils, ec);
+                return ec;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+        }
+
 
     }
 }

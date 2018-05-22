@@ -23,6 +23,44 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            string month = DateTime.Today.Month.ToString(); 
+            string day = DateTime.Today.Day.ToString();
+            Day.Text = day;
+            Month.Text = month;
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
+        }
+
+        private void HomeBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
+
+        private void ClientsBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            ClientesWPF clientes = new ClientesWPF();
+            clientes.Show();
+            this.Close();
+        }
+
+        private void ContratosBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            ContratosWPF contratos = new ContratosWPF();
+            contratos.Show();
+            this.Close();
+
+        }
+
+        private void CloseBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MinimizeBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

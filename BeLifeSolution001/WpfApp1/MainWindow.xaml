@@ -5,43 +5,139 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1100">
+        Title="MainWindow" Height="800" Width="1100" WindowStyle="None">
     <Grid x:Name="MainBG" Background="#f6f6f6" Margin="0,2,-0.4,-1.6">
 
-        
+        <Grid x:Name="Title" Width="600px" Height="90" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="82,100,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="121*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock FontSize="40" Foreground="#c1c1c1" FontWeight="Bold" FontFamily="Font Awesome 5 Free Solid" Margin="0,10,435.3,-1" >home</TextBlock>
+            <TextBlock FontSize="40" Foreground="#c1c1c1" Margin="53,0,0,-1" Height="91" VerticalAlignment="Bottom" Grid.ColumnSpan="2" >Seguros BeLife - Resumen</TextBlock>
+        </Grid>
 
+        <!--TopBar-->
         <Grid x:Name="TopBar" Height="70" Background="#FFF" VerticalAlignment="Top">
+
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="20" Color="#FFF6F6F6"/>
             </Grid.Effect>
+            <Image Margin="75,10,861.4,14" Source="Logo BeLife.png" Stretch="Fill"/>
             <Grid Width="90" Height="30" Margin="0 10 10 0" VerticalAlignment="Top" HorizontalAlignment="Right">
                 <Button BorderBrush="#FFF" Background="#FFF" Margin="0,0,62,0">
                     <Image Height="20" Source="adjust.png" Stretch="Fill" Width="20"/>
                 </Button>
                 <Button BorderBrush="#FFF" Background="#FFF" Margin="30,0,32,0">
-                    <Image VerticalAlignment="Bottom" Height="2" Source="minimize.png" Width="11"/>
+                    <Image VerticalAlignment="Bottom" Height="2" Source="minimize.png" Width="11" MouseDown="MinimizeBtn_Click"/>
                 </Button>
                 <Button BorderBrush="#FFF" Background="#FFF" Margin="63,0,0,0">
-                    <Image Height="15" Source="close.png" Stretch="Fill" Width="16"/>
+                    <Image Height="15" Source="close.png" Stretch="Fill" Width="16" MouseDown="CloseBtn_Click"/>
                 </Button>
             </Grid>
         </Grid>
+
+        <!--Clientes-->
+        <TextBlock FontSize="30" Foreground="#c1c1c1" Margin="82,0,632,573.2" Height="44" VerticalAlignment="Bottom" >Clientes</TextBlock>
+        <Grid x:Name="ClientsResume" Width="380" Height="205" Background="#7e3b82" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="82,221,0,0">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFD9D9D9"/>
+            </Grid.Effect>
+            <TextBlock Margin="20,0,100,10" TextAlignment="Left" Foreground="#FFF" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="22">Resumen clientes</TextBlock>
+            <TextBlock Margin="20,10,112,0" TextAlignment="Left" Foreground="#FFF" VerticalAlignment="top" FontFamily="Font Awesome 5 Free Solid" FontWeight="Bold" FontSize="100" Height="151">users</TextBlock>
+
+        </Grid>
+        <Grid x:Name="AgregarUsuario" Width="380" Height="90" Background="#7e3b82" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="82,431,0,0">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFD9D9D9"/>
+            </Grid.Effect>
+            <TextBlock Margin="20,0,100,10" TextAlignment="Left" Foreground="#FFF" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="22">Agregar clientes</TextBlock>
+            <TextBlock Margin="0,10,10,0" TextAlignment="Right" Foreground="#FFF" VerticalAlignment="Top" HorizontalAlignment="Right" FontWeight="Bold" FontSize="60" Width="195" Height="70"  FontFamily="Font Awesome 5 Free Solid">users</TextBlock>
+            <TextBlock Margin="280,0,0,18" TextAlignment="Left" Foreground="#FFF" VerticalAlignment="Bottom" HorizontalAlignment="left" FontWeight="Bold" FontSize="30" Width="34" Height="35"  FontFamily="Font Awesome 5 Free Solid">plus</TextBlock>
+        </Grid>
+        <Grid x:Name="ListarUsuarios" Width="380" Height="90" Background="#7e3b82" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="82,621,0,0">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFD9D9D9"/>
+            </Grid.Effect>
+            <TextBlock Margin="20,0,100,10" TextAlignment="Left" Foreground="#FFF" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="22">Listar clientes</TextBlock>
+            <TextBlock Margin="0,10,10,0" TextAlignment="Right" Foreground="#FFF" VerticalAlignment="Top" HorizontalAlignment="Right" FontWeight="Bold" FontSize="60" Width="195" Height="70"  FontFamily="Font Awesome 5 Free Solid">list</TextBlock>
+        </Grid>
+
+
+
         <Grid x:Name="SideBar" Width="50" Background="#2c2c2c" Height="800" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Grid x:Name="Home" Width="50" Height="50" Background="#2c2c2c" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,100,0,0">
-            <TextBlock x:Name="HomeBtn" TextAlignment="Center" Foreground="#FFF" FontWeight="Bold" FontSize="40" FontFamily="Font Awesome 5 Free Solid" Margin="0,0,0,-1">home</TextBlock>
+            <TextBlock x:Name="HomeBtn" TextAlignment="Center" Foreground="#c3c3c3" FontWeight="Bold" FontSize="40" FontFamily="Font Awesome 5 Free Solid" Margin="0,0,0,-1" MouseDown="HomeBtn_Click">home</TextBlock>
         </Grid>
         <Grid x:Name="Separator1" Width="50" Height="1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#464646" Margin="0,160,0,0"></Grid>
         <Grid x:Name="Clientes" Width="50" Height="50" Background="#2c2c2c" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,170,0,0">
-            <TextBlock x:Name="ClientsBtn" TextAlignment="Center" Foreground="#FFF" FontWeight="Bold" FontSize="35" FontFamily="Font Awesome 5 Free Solid" Margin="0,7,0,-1">users</TextBlock>
+            <TextBlock x:Name="ClientsBtn" TextAlignment="Center" Foreground="#FFF" FontWeight="Bold" FontSize="35" FontFamily="Font Awesome 5 Free Solid" Margin="0,7,0,-1" MouseDown="ClientsBtn_Click">users</TextBlock>
 
         </Grid>
         <Grid x:Name="Separator2" Width="50" Height="1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#464646" Margin="0,230,0,0"></Grid>
         <Grid x:Name="Contratos" Width="50" Height="50" Background="#2c2c2c" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,240,0,0">
-            <TextBlock x:Name="ContratosBtn" TextAlignment="Center" Foreground="#FFF" FontWeight="Bold" FontSize="40" FontFamily="Font Awesome 5 Free Solid" Margin="0,0,0,-1">file</TextBlock>
+            <TextBlock x:Name="ContratosBtn" TextAlignment="Center" Foreground="#FFF" FontWeight="Bold" FontSize="40" FontFamily="Font Awesome 5 Free Solid" Margin="0,0,0,-1" MouseDown="ContratosBtn_Click">file</TextBlock>
 
         </Grid>
 
         <Grid x:Name="Footer" Background="#2c2c2c" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1100"/>
-        <Image Margin="75,14,861,713" Source="Logo BeLife.png" Stretch="Fill"/>
+        <Grid x:Name="AgregarUsuario_Copy" Width="187" Height="90" Background="#7e3b82" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="82,526,0,0">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFD9D9D9"/>
+            </Grid.Effect>
+            <TextBlock TextAlignment="center" Foreground="#FFF" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold" FontSize="60" Width="187" Height="67"  FontFamily="Font Awesome 5 Free Solid" Margin="0,13,0,10">cog</TextBlock>
+        </Grid>
+        <Grid x:Name="AgregarUsuario_Copy2" Width="187" Height="90" Background="#7e3b82" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="275,526,0,0">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFD9D9D9"/>
+            </Grid.Effect>
+            <TextBlock TextAlignment="center" Foreground="#FFF" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold" FontSize="60" Width="187" Height="65"  FontFamily="Font Awesome 5 Free Solid" Margin="0,15,0,10">trash</TextBlock>
+
+        </Grid>
+
+        <!--CONTRATOS-->
+
+        <TextBlock FontSize="30" Foreground="#c1c1c1" Margin="525,0,187,573.2" Height="44" VerticalAlignment="Bottom" >Contratos</TextBlock>
+        <Grid x:Name="ContratosResume" Width="380" Height="205" Background="#7e3b82" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="525,220,0,0">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFD9D9D9"/>
+            </Grid.Effect>
+            <TextBlock Margin="20,0,100,10" TextAlignment="Left" Foreground="#FFF" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="22">Resumen contratos</TextBlock>
+            <TextBlock Margin="20,10,112,0" TextAlignment="Left" Foreground="#FFF" VerticalAlignment="top" FontFamily="Font Awesome 5 Free Solid" FontWeight="Bold" FontSize="100" Height="151">file</TextBlock>
+        </Grid>
+        <Grid x:Name="ListarContratos" Width="518" Height="90" Background="#7e3b82" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="525,431,0,0">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFD9D9D9"/>
+            </Grid.Effect>
+            <TextBlock Margin="20,0,100,10" TextAlignment="Left" Foreground="#FFF" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="22">Listar contratos</TextBlock>
+            <TextBlock Margin="0,10,10,0" TextAlignment="Right" Foreground="#FFF" VerticalAlignment="Top" HorizontalAlignment="Right" FontWeight="Bold" FontSize="60" Width="195" Height="70"  FontFamily="Font Awesome 5 Free Solid">list</TextBlock>
+        </Grid>
+        <Grid x:Name="AgregarUsuario_Copy3" Width="133" Height="100" Background="#7e3b82" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="910,326,0,0">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFD9D9D9"/>
+            </Grid.Effect>
+            <TextBlock TextAlignment="center" Foreground="#FFF" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold" FontSize="60" Width="134" Height="65"  FontFamily="Font Awesome 5 Free Solid" Margin="0,15,-1,10">cog</TextBlock>
+
+        </Grid>
+        <Grid x:Name="AgregarUsuario_Copy4" Width="133" Height="100" Background="#7e3b82" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="910,220,0,0">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFD9D9D9"/>
+            </Grid.Effect>
+            <TextBlock TextAlignment="center" Foreground="#FFF" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold" FontSize="60" Width="134" Height="65"  FontFamily="Font Awesome 5 Free Solid" Margin="0,15,-1,10">cog</TextBlock>
+
+        </Grid>
+
+
+        <!--Extras-->
+        <TextBlock FontSize="30" Foreground="#c1c1c1" Margin="525,0,186,177.2" Height="44" VerticalAlignment="Bottom" >Extras</TextBlock>
+        <Grid x:Name="Calendario" Width="518" Height="90" Background="#7e3b82" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="525,621,0,0">
+            <Grid.Effect>
+                <DropShadowEffect Color="#FFD9D9D9"/>
+            </Grid.Effect>
+            <TextBlock Margin="0,10,343,0" TextAlignment="Right" Foreground="#FFF" VerticalAlignment="Top" HorizontalAlignment="Right" FontWeight="Bold" FontSize="60" Width="64" Height="70"  FontFamily="Font Awesome 5 Free Solid">calendar</TextBlock>
+            <TextBlock x:Name="Month" Margin="154,0,78,10" Foreground="#FFF" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="22" TextAlignment="Center">Mes</TextBlock>
+            <TextBlock x:Name="Day" Margin="198,0,125,38" Foreground="#FFF" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="40" TextAlignment="Center" Height="52">0</TextBlock>
+        </Grid>
+
     </Grid>
 </Window>

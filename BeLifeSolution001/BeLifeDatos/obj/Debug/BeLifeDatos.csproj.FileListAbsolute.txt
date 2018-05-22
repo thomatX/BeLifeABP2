@@ -1,0 +1,12 @@
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\bin\Debug\BeLifeDatos.dll.config
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\bin\Debug\BeLifeDatos.dll
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\bin\Debug\BeLifeDatos.pdb
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\bin\Debug\EntityFramework.dll
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\bin\Debug\EntityFramework.xml
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\obj\Debug\BeLifeDatos.csprojAssemblyReference.cache
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\obj\Debug\BeLifeDatos.csproj.CoreCompileInputs.cache
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\obj\Debug\BeLifeDatos.csproj.CopyComplete
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\obj\Debug\BeLifeDatos.dll
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\BeLifeDatos\obj\Debug\BeLifeDatos.pdb

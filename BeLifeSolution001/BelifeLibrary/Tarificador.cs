@@ -21,7 +21,8 @@ namespace BelifeLibrary
             Cliente = new Cliente();
         }
 
-        public float CalcularPrima() {
+        public float CalcularPrima(string Id) {
+
 
             var prima1 = bbdd.Plan.First(x => x.Id == Id);
             float prima = (float) prima1.PrimaBase;

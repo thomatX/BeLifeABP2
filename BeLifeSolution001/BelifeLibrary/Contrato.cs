@@ -19,7 +19,7 @@ namespace BelifeLibrary
         /// <summary>
         /// Fecha de creación. Generada automáticamente al crear el contrato.
         /// </summary>
-        public DateTime Creacion { get; set; }
+        public DateTime FechaCreacion { get; set; }
 
         /// <summary>
         /// Fecha de Termino. Generada automáticamente, justo un año después de la fecha de creación.
@@ -48,7 +48,7 @@ namespace BelifeLibrary
         /// Fecha Inicio Vigencia del contrato.
         /// Esta no puede ser menor a la fecha actual ni puede exceder de 1 mes.
         /// </summary>
-        public DateTime InicioVigencia {
+        public DateTime FechaInicioVigencia {
             get { return _inicioVigencia; }
             set
             {
@@ -60,7 +60,7 @@ namespace BelifeLibrary
         }
 
 
-        public DateTime FinVigencia { get; set; }
+        public DateTime FechaFinVigencia { get; set; }
 
         /// <summary>
         /// Si la fecha de FinVigencia aún no llega, el contrato está vigente.
@@ -103,13 +103,13 @@ namespace BelifeLibrary
         private void Init()
         {
             Numero = Negocio.Configuracion.CrearNumeroContrato();
-            Creacion = DateTime.Today;
+            FechaCreacion = DateTime.Today;
             Termino = Negocio.Configuracion.CrearFechaTermino();
             Titular = new Cliente();
             PlanAsociado = new Plan();
             Poliza = string.Empty;
             _inicioVigencia = new DateTime();
-            FinVigencia = new DateTime();
+            FechaFinVigencia = new DateTime();
             EstaVigente = false;
             ConDeclaracionDeSalud = false;
             PrimaAnual = 0f;
@@ -123,33 +123,43 @@ namespace BelifeLibrary
         /// Verifica que el contrato no exista, según su numero de contrato.
         /// </summary>
         /// <returns></returns>
-        public bool Create() {
+        public bool Create()
+        {
             try
             {
-                /*Intenta buscar el ccontrato asociado al numero de contrato que se desea agregar.*/
-                var contrato = bbdd.Contrato.First(x => x.Numero == Numero);
+                /* Intenta buscar el ccontrato asociado al numero de contrato que se desea agregar.*/
+                var contrato = bbdd.Contrato.Where(x => x.Numero == Numero).SingleOrDefault();
                 if (contrato != null)
                 {
-                    /*En caso de que lo encuentre, levanta una excepción*/
-                    throw new Exception("Error! Ya existe un contrato con ese numero.");
+                    /* En caso de que lo encuentre, levanta una excepción */
+                     throw new Exception("Error! Ya existe un contrato con ese numero.");
                 }
-                /*No se encontró el numero del contrato, por lo que el contrato no existe.*/
+                /* No se encontró el numero del contrato, por lo que el contrato no existe.*/
                 else
                 {
-                    /*Agregamos el cliente*/
+                    /* Agregamos el contrato*/
                     BeLifeDatos.Contrato con = new BeLifeDatos.Contrato();
+
+                    con.RutCliente = this.Titular.Rut;
+                    con.CodigoPlan = this.PlanAsociado.Id;
+                    con.Cliente = bbdd.Cliente.FirstOrDefault(r => r.Rut == this.Titular.Rut);
+                    con.Plan = bbdd.Plan.FirstOrDefault(p => p.Id == this.PlanAsociado.Id);
+                    con.FechaCreacion = this.FechaCreacion;
+                    con.FechaInicioVigencia = this.FechaInicioVigencia;
+                    con.FechaFinVigencia = this.FechaFinVigencia;
                     CommonBC.Syncronize(this, con);
+
                     bbdd.Contrato.Add(con);
                     bbdd.SaveChanges();
                     return true;
                 }
             }
+
             catch (Exception ex)
             {
-                /*En caso de encontrar alguna excepción, la imprime en consola y se la envía al WPF para controlar el mensaje*/
-                Console.Write(ex);
+                /* En caso de encontrar alguna excepción, la imprime en consola y se la envía al WPF para controlar el mensaje*/
+                 Console.Write(ex.InnerException);
                 return false;
-                throw ex;
             }
         }
 
@@ -218,7 +228,7 @@ namespace BelifeLibrary
                 if (contrato != null)
                 {
                     this.Termino = DateTime.Now;
-                    this.FinVigencia = DateTime.Now;
+                    this.FechaFinVigencia = DateTime.Now;
                     this.EstaVigente = false;
                     CommonBC.Syncronize(this, contrato);
                     bbdd.SaveChanges();

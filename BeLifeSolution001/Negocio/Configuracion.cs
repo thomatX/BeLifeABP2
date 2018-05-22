@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Controls;
 
 namespace Negocio
 {
@@ -258,7 +258,6 @@ namespace Negocio
 
 
 
-
         /* ------------------------------------------------------------------------
          *                                ESTADO CIVIL
          *        Toda la configuración y validaciones de la clase Estado Civil
@@ -297,5 +296,7 @@ namespace Negocio
 
             return validated;
         }
+
+       
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\bin\Debug\Negocio.dll.config
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\bin\Debug\Negocio.dll
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\bin\Debug\Negocio.pdb
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\bin\Debug\BeLifeDatos.dll
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\bin\Debug\EntityFramework.dll
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\bin\Debug\BeLifeDatos.pdb
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\bin\Debug\BeLifeDatos.dll.config
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\bin\Debug\EntityFramework.xml
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\obj\Debug\Negocio.dll
+C:\Users\tweis\Desktop\Thomas\Universidad\Visual C#\ABP2\Source\BeLifeABP2\BeLifeSolution001\Negocio\obj\Debug\Negocio.pdb
